@@ -2,6 +2,17 @@
 import { Modal } from "@/components/Modal";
 import { Dispatch } from "react";
 
+const Themes = [
+  "light",
+  "dark",
+  "cupcake",
+  "corporate",
+  "synthwave",
+  "wireframe",
+  "business",
+  "night",
+];
+
 export default function SettingsModal({
   open,
   setOpen,
@@ -30,6 +41,20 @@ export default function SettingsModal({
           </label>
           <input type="file" className="file-input file-input-bordered" />
         </div>
+      </div>
+
+      <div>Theme</div>
+      <div className="join join-vertical">
+        {Themes.map((theme) => (
+          <input
+            key={theme}
+            type="radio"
+            name="theme-buttons"
+            className="btn theme-controller join-item"
+            aria-label={theme}
+            value={theme}
+          />
+        ))}
       </div>
     </Modal>
   );

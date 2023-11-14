@@ -22,10 +22,11 @@ export default function Sidebar() {
   const [searchModal, setSearchModal] = useState<boolean>(false);
   const [settingsModal, setSettingsModal] = useState<boolean>(false);
 
-  const isActive = (url: string) => pathname === url;
+  const isActive = (url: string, extact: boolean = false) =>
+    extact ? pathname === url : pathname.startsWith(url);
 
   return (
-    <ul className="menu">
+    <ul className="menu gap-1">
       <SearchModal open={searchModal} setOpen={setSearchModal} />
       <SettingsModal open={settingsModal} setOpen={setSettingsModal} />
 
@@ -55,7 +56,7 @@ export default function Sidebar() {
           href={"/dashboard"}
           className={classes(
             "flex items-center flex-col md:flex-row",
-            isActive("/dashboard") && "active"
+            isActive("/dashboard", true) && "active"
           )}
         >
           <UserIcon />
