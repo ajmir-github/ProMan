@@ -1,7 +1,6 @@
 import { ProjectIcon, TextBodyIcon, UsersIcon } from "@/components/Icons";
-import Image from "next/image";
-import Link from "next/link";
 import Team from "@/interfaces/Team";
+import { Link } from "react-router-dom";
 
 export default function TeamCard({
   team: { id, name, area, numberOfMembers, numberOfProjects, image },
@@ -11,13 +10,13 @@ export default function TeamCard({
   return (
     <Link
       className="grid bg-base-100 rounded-lg p-4 gap-2 hover:bg-base-200"
-      href={`/dashboard/teams/${id}`}
+      to={`/dashboard/teams/${id}`}
     >
       <div className="flex gap-4">
         {image ? (
           <div className="avatar">
             <div className="w-20 h-20 rounded-xl">
-              <Image
+              <img
                 alt={name}
                 className=" object-cover object-center flex-shrink-0 rounded-full"
                 src={image}
